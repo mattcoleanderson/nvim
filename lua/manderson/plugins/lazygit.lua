@@ -1,4 +1,3 @@
--- Setup Plugins
 return {
   {
     "kdheepak/lazygit.nvim",
