@@ -1,10 +1,6 @@
 -- Setup Plugins
 return {
   {
-    "nvim-treesitter/nvim-treesitter",
-    build = ":TSUpdate"
-  },
-  {
     "kdheepak/lazygit.nvim",
     cmd = {
       "LazyGit",
