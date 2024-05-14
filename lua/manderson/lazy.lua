@@ -12,5 +12,6 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+-- modularize lazy by autoloading any file under ./plugins directory
 require('lazy').setup('manderson/plugins')
 
