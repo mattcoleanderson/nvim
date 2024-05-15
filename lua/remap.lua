@@ -1,4 +1,7 @@
-vim.g.mapleader = ' '
+-- Set Map leader
+vim.keymap.set('n', '<Space>', '<Nop>') -- remap space to nothing so hitting space doesn't move the cursore to the left by 1
+vim.g.mapleader = ' '                   -- remap mapleader to space
+
 -- vim.keymap.set('n', '<leader>e', vim.cmd.Ex)
 
 -- Core commands
