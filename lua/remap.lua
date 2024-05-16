@@ -10,4 +10,3 @@ vim.keymap.set('n', '<leader>s', ':w<CR>') -- Save
 
 -- Windows
 vim.keymap.set('n', '<leader>w', '<C-w>') -- Windows now accessed with leader-w
-

@@ -9,7 +9,7 @@ return {
     },
     keys = {
       { '<leader>ee', '<cmd>Neotree filesystem reveal left toggle<CR>', desc = 'Neotree: Explore File Tree' },
-      { '<leader>eb', '<cmd>Neotree buffers reveal left toggle<CR>', desc = 'Neotree: Explore Buffers' },
+      { '<leader>eb', '<cmd>Neotree buffers reveal left toggle<CR>',    desc = 'Neotree: Explore Buffers' },
       { '<leader>eg', '<cmd>Neotree git_status reveal left toggle<CR>', desc = 'Neotree: Explore Git Status' },
     },
     opts = {
@@ -19,7 +19,7 @@ return {
       enable_diagnostics = true,
       default_component_configs = {
         container = {
-          enable_character_fade = true
+          enable_character_fade = true,
         },
         indent = {
           indent_size = 2,
@@ -42,7 +42,7 @@ return {
           -- The next two settings are only a fallback, if you use nvim-web-devicons and configure default icons there
           -- then these will never be used.
           default = '*',
-          highlight = 'NeoTreeFileIcon'
+          highlight = 'NeoTreeFileIcon',
         },
         modified = {
           symbol = '[+]',
@@ -56,17 +56,17 @@ return {
         git_status = {
           symbols = {
             -- Change type
-            added     = '', -- or '✚', but this is redundant info if you use git_status_colors on the name
-            modified  = '', -- or '', but this is redundant info if you use git_status_colors on the name
-            deleted   = '✖',-- this can only be used in the git_status source
-            renamed   = '󰁕',-- this can only be used in the git_status source
+            added = '', -- or '✚', but this is redundant info if you use git_status_colors on the name
+            modified = '', -- or '', but this is redundant info if you use git_status_colors on the name
+            deleted = '✖', -- this can only be used in the git_status source
+            renamed = '󰁕', -- this can only be used in the git_status source
             -- Status type
             untracked = '',
-            ignored   = '',
-            unstaged  = '󰄱',
-            staged    = '',
-            conflict  = '',
-          }
+            ignored = '',
+            unstaged = '󰄱',
+            staged = '',
+            conflict = '',
+          },
         },
         -- If you don't want to use these columns, you can set `enabled = false` for each of them individually
         file_size = {
@@ -101,9 +101,9 @@ return {
           nowait = true,
         },
         mappings = {
-          ['<space>'] = { 
-              'toggle_node', 
-              nowait = false, -- disable `nowait` if you have existing combos starting with this char that you want to use 
+          ['<space>'] = {
+            'toggle_node',
+            nowait = false, -- disable `nowait` if you have existing combos starting with this char that you want to use
           },
           ['<2-LeftMouse>'] = 'open',
           ['<cr>'] = 'open',
@@ -124,13 +124,13 @@ return {
           -- ['C'] = 'close_all_subnodes',
           ['z'] = 'close_all_nodes',
           --['Z'] = 'expand_all_nodes',
-          ['a'] = { 
+          ['a'] = {
             'add',
             -- this command supports BASH style brace expansion ('x{a,b,c}' -> xa,xb,xc). see `:h neo-tree-file-actions` for details
             -- some commands may take optional config options, see `:h neo-tree-mappings` for details
             config = {
-              show_path = 'none' -- 'none', 'relative', 'absolute'
-            }
+              show_path = 'none', -- 'none', 'relative', 'absolute'
+            },
           },
           ['A'] = 'add_directory', -- also accepts the optional config.show_path option like 'add'. this also supports BASH style brace expansion.
           ['d'] = 'delete',
@@ -152,7 +152,7 @@ return {
           ['<'] = 'prev_source',
           ['>'] = 'next_source',
           ['i'] = 'show_file_details',
-        }
+        },
       },
       nesting_rules = {},
       filesystem = {
@@ -180,18 +180,18 @@ return {
           },
         },
         follow_current_file = {
-          enabled = false, -- This will find and focus the file in the active buffer every time
+          enabled = false,                      -- This will find and focus the file in the active buffer every time
           --               -- the current file is changed while the tree is open.
-          leave_dirs_open = false, -- `false` closes auto expanded dirs, such as with `:Neotree reveal`
+          leave_dirs_open = false,              -- `false` closes auto expanded dirs, such as with `:Neotree reveal`
         },
-        group_empty_dirs = false, -- when true, empty folders will be grouped together
+        group_empty_dirs = false,               -- when true, empty folders will be grouped together
         hijack_netrw_behavior = 'open_default', -- netrw disabled, opening a directory opens neo-tree
-                                                -- in whatever position is specified in window.position
-                              -- 'open_current',  -- netrw disabled, opening a directory opens within the
-                                                -- window like netrw would, regardless of window.position
-                              -- 'disabled',    -- netrw left alone, neo-tree does not handle opening dirs
+        -- in whatever position is specified in window.position
+        -- 'open_current',  -- netrw disabled, opening a directory opens within the
+        -- window like netrw would, regardless of window.position
+        -- 'disabled',    -- netrw left alone, neo-tree does not handle opening dirs
         use_libuv_file_watcher = false, -- This will use the OS level file watchers to detect changes
-                                        -- instead of relying on nvim autocmd events.
+        -- instead of relying on nvim autocmd events.
         window = {
           mappings = {
             ['<bs>'] = 'navigate_up',
@@ -205,7 +205,7 @@ return {
             ['<c-x>'] = 'clear_filter',
             ['[g'] = 'prev_git_modified',
             [']g'] = 'next_git_modified',
-            ['o'] = { 'show_help', nowait=false, config = { title = 'Order by', prefix_key = 'o' }},
+            ['o'] = { 'show_help', nowait = false, config = { title = 'Order by', prefix_key = 'o' } },
             ['oc'] = { 'order_by_created', nowait = false },
             ['od'] = { 'order_by_diagnostics', nowait = false },
             ['og'] = { 'order_by_git_status', nowait = false },
@@ -224,52 +224,52 @@ return {
           },
         },
 
-        commands = {} -- Add a custom command or override a global one using the same function name
+        commands = {}, -- Add a custom command or override a global one using the same function name
       },
       buffers = {
         follow_current_file = {
-          enabled = true, -- This will find and focus the file in the active buffer every time
+          enabled = true,          -- This will find and focus the file in the active buffer every time
           --              -- the current file is changed while the tree is open.
           leave_dirs_open = false, -- `false` closes auto expanded dirs, such as with `:Neotree reveal`
         },
-        group_empty_dirs = true, -- when true, empty folders will be grouped together
+        group_empty_dirs = true,   -- when true, empty folders will be grouped together
         show_unloaded = true,
         window = {
           mappings = {
             ['bd'] = 'buffer_delete',
             ['<bs>'] = 'navigate_up',
             ['.'] = 'set_root',
-            ['o'] = { 'show_help', nowait=false, config = { title = 'Order by', prefix_key = 'o' }},
+            ['o'] = { 'show_help', nowait = false, config = { title = 'Order by', prefix_key = 'o' } },
             ['oc'] = { 'order_by_created', nowait = false },
             ['od'] = { 'order_by_diagnostics', nowait = false },
             ['om'] = { 'order_by_modified', nowait = false },
             ['on'] = { 'order_by_name', nowait = false },
             ['os'] = { 'order_by_size', nowait = false },
             ['ot'] = { 'order_by_type', nowait = false },
-          }
+          },
         },
       },
       git_status = {
         window = {
           position = 'float',
           mappings = {
-            ['A']  = 'git_add_all',
+            ['A'] = 'git_add_all',
             ['gu'] = 'git_unstage_file',
             ['ga'] = 'git_add_file',
             ['gr'] = 'git_revert_file',
             ['gc'] = 'git_commit',
             ['gp'] = 'git_push',
             ['gg'] = 'git_commit_and_push',
-            ['o'] = { 'show_help', nowait=false, config = { title = 'Order by', prefix_key = 'o' }},
+            ['o'] = { 'show_help', nowait = false, config = { title = 'Order by', prefix_key = 'o' } },
             ['oc'] = { 'order_by_created', nowait = false },
             ['od'] = { 'order_by_diagnostics', nowait = false },
             ['om'] = { 'order_by_modified', nowait = false },
             ['on'] = { 'order_by_name', nowait = false },
             ['os'] = { 'order_by_size', nowait = false },
             ['ot'] = { 'order_by_type', nowait = false },
-          }
-        }
-      }
-    }
-  }
+          },
+        },
+      },
+    },
+  },
 }

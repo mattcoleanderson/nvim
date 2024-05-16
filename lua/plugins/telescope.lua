@@ -8,16 +8,16 @@ return {
     },
     keys = {
       { '<leader>ff', '<cmd>Telescope find_files<cr>', desc = 'Telescope: Search all project files' },
-      { '<leader>fg', '<cmd>Telescope git_files<cr>', desc = 'Telescope: Search git files' }
+      { '<leader>fg', '<cmd>Telescope git_files<cr>',  desc = 'Telescope: Search git files' },
     },
     opts = function()
-      local theme = require("telescope.themes").get_dropdown({})
+      local theme = require('telescope.themes').get_dropdown({})
       return {
         extensions = {
-          ["ui-select"] = {
-            theme
-          }
-        }
+          ['ui-select'] = {
+            theme,
+          },
+        },
       }
     end,
     config = function(_, opts)
@@ -25,6 +25,6 @@ return {
 
       plugin.setup(opts)
       plugin.load_extension('ui-select')
-    end
-  }
+    end,
+  },
 }

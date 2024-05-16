@@ -1,7 +1,7 @@
 return {
   {
-    "nvim-treesitter/nvim-treesitter",
-    build = ":TSUpdate",
+    'nvim-treesitter/nvim-treesitter',
+    build = ':TSUpdate',
     main = 'nvim-treesitter.configs',
     opts = {
       -- A list of parser names, or 'all' (the five listed parsers should always be installed)
@@ -23,7 +23,7 @@ return {
         -- Using this option may slow down your editor, and you may see some duplicate highlights.
         -- Instead of true it can also be a list of languages
         additional_vim_regex_highlighting = false,
-      }
-    }
-  }
+      },
+    },
+  },
 }
