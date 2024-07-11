@@ -14,4 +14,5 @@ vim.opt.rtp:prepend(lazypath)
 
 require('options')
 require('remap')
+require('commands')
 require('lazy').setup('plugins') -- top-level files in lua/plugins will be auto-required
