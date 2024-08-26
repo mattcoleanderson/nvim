@@ -21,5 +21,6 @@ return {
         path = obsidian_dir,
       },
     },
+    disable_frontmatter = true,
   },
 }
