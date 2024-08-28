@@ -5,6 +5,7 @@ local wk = require('which-key')
 vim.keymap.set('n', '<leader>q', ':conf q<CR>', { desc = 'Quit the current window. Prompt for unsaved buffers.' })
 vim.keymap.set('n', '<leader>Q', ':conf qa<CR>', { desc = 'Exit Vim. Prompt for unsaved buffers.' })
 vim.keymap.set('n', '<leader>s', ':w<CR>', { desc = 'Save the current buffer in window' })
+vim.keymap.set('n', '<leader>h', ':noh<CR>', { desc = 'Remove highlighting for search' })
 
 -- Windows
 -- if you would like to add more window commands type `:h CTRL-W`
