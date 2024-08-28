@@ -12,7 +12,12 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+-- Set Map leader
+vim.keymap.set('n', '<Space>', '<Nop>') -- remap space to nothing so hitting space doesn't move the cursore to the left by 1
+vim.g.mapleader = ' ' -- remap mapleader to space
+
+-- Run all other lua files
 require('options')
 require('commands')
-require('keymap')
-require('lazy').setup('plugins') -- top-level files in lua/plugins will be auto-required
+require('lazy').setup('plugins')  -- top-level files in lua/plugins will be auto-required
+require('keymap')                 -- ran last so which-key can be used, might create a second file for which-key mappings

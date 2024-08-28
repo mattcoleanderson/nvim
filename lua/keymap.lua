@@ -1,7 +1,4 @@
--- Set Map leader
-vim.keymap.set('n', '<Space>', '<Nop>') -- remap space to nothing so hitting space doesn't move the cursore to the left by 1
-vim.g.mapleader = ' ' -- remap mapleader to space
-
+local wk = require('which-key')
 -- vim.keymap.set('n', '<leader>e', vim.cmd.Ex)
 
 -- Core commands
@@ -10,7 +7,18 @@ vim.keymap.set('n', '<leader>Q', ':conf qa<CR>', { desc = 'Exit Vim. Prompt for 
 vim.keymap.set('n', '<leader>s', ':w<CR>', { desc = 'Save the current buffer in window' })
 
 -- Windows
-vim.keymap.set('n', '<leader>w', '<C-w>', { desc = 'Access Window commands' })
+-- if you would like to add more window commands type `:h CTRL-W`
+wk.add({
+  { '<leader>w', proxy = '<c-w>',      group = 'window' }, -- proxy to window mappings
+  { '<c-w>c',    desc = 'Close window' },
+  { '<c-w>H', desc = 'move current window to the far left' },
+  { '<c-w>J', desc = 'move current window to the very bottom' },
+  { '<c-w>K', desc = 'move current window to the very top' },
+  { '<c-w>L', desc = 'move current window to the far right' },
+})
 
 -- Custom Commands
-vim.keymap.set('n', '<leader>c', ':ToggleConcealLevel<CR>', { desc = 'Change conceal level between 2 and 0' })
+wk.add({
+  { '<leader>g', group = 'other' }, -- A catch all for commands without a group
+})
+vim.keymap.set('n', '<leader>gc', ':ToggleConcealLevel<CR>', { desc = 'Change conceal level between 2 and 0' })
