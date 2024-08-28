@@ -7,11 +7,16 @@ return {
       'nvim-tree/nvim-web-devicons',
       'MunifTanjim/nui.nvim',
     },
-    keys = {
-      { '<leader>ee', '<cmd>Neotree filesystem reveal left toggle<CR>', desc = 'Neotree: Explore File Tree' },
-      { '<leader>eb', '<cmd>Neotree buffers reveal left toggle<CR>',    desc = 'Neotree: Explore Buffers' },
-      { '<leader>eg', '<cmd>Neotree git_status reveal left toggle<CR>', desc = 'Neotree: Explore Git Status' },
-    },
+    keys = function()
+      local wk = require('which-key')
+      wk.add({ '<leader>e', group = 'explorer' })
+
+      return {
+        { '<leader>ee', '<cmd>Neotree filesystem reveal left toggle<CR>', desc = 'Neotree: Explore File Tree' },
+        { '<leader>eb', '<cmd>Neotree buffers reveal left toggle<CR>',    desc = 'Neotree: Explore Buffers' },
+        { '<leader>eg', '<cmd>Neotree git_status reveal left toggle<CR>', desc = 'Neotree: Explore Git Status' },
+      }
+    end,
     opts = {
       close_if_last_window = false, -- Close Neo-tree if it is the last window left in the tab
       popup_border_style = 'rounded',
