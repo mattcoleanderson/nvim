@@ -64,6 +64,12 @@ return {
               buffer = ev.buf,
               desc = 'Selects a code action available at the current cursor position.',
             },
+            {
+              '<leader>lf',
+              vim.lsp.buf.format,
+              buffer = ev.buf,
+              desc = 'Formats a buffer using the attached language server clients.',
+            },
           })
         end,
       })
