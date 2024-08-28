@@ -1,20 +1,27 @@
-local obsidian_dir = vim.fn.expand('~') .. '/repos/personal/obsidian-personal-vault'
-
-return {
+local M = {
   'epwalsh/obsidian.nvim',
   version = '*', -- '*' installs the latest stable version from github
   lazy = true,
-  event = {
-    'BufReadPre ' .. obsidian_dir .. '/**.md',
-    'BufNewFile ' .. obsidian_dir .. '/**.md',
-  },
-  dependencies = {
-    'nvim-lua/plenary.nvim',
-  },
-  keys = {
-    { '<leader>of', '<cmd>ObsidianFollowLink<cr>', desc = 'Obsidian: Follow link under cursor' },
-  },
-  opts = {
+}
+
+local obsidian_dir = vim.fn.expand('~') .. '/repos/personal/obsidian-personal-vault'
+
+M.event = {
+  'BufReadPre ' .. obsidian_dir .. '/**.md',
+  'BufNewFile ' .. obsidian_dir .. '/**.md',
+}
+
+M.dependencies = {
+  'nvim-lua/plenary.nvim',
+}
+
+M.opts = function()
+  -- Local Keymaps
+  -- only created when plugin is loaded
+  vim.keymap.set('n', '<localleader>f', '<cmd>ObsidianFollowLink<cr>', { desc = 'Obsidian: Follow link under cursor' })
+
+  -- plugin options
+  return {
     workspaces = {
       {
         name = 'personal',
@@ -22,5 +29,7 @@ return {
       },
     },
     disable_frontmatter = true,
-  },
-}
+  }
+end
+
+return M
