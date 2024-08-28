@@ -6,6 +6,7 @@ return {
 
       lspconfig.tsserver.setup({})
       lspconfig.lua_ls.setup({})
+      lspconfig.texlab.setup({})
 
       -- Global mappings
       vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, {})
