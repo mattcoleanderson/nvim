@@ -28,12 +28,42 @@ return {
           -- local opts = { buffer = ev.buf }
           wk.add({
             { '<leader>l', group = 'lsp' },
-            { '<leader>ld', vim.lsp.buf.definition, buffer = ev.buf, desc = 'Jumps to the definition of the symbol under the cursor.' },
-            { '<leader>lD', vim.lsp.buf.declation, buffer = ev.buf, desc = 'Jumps to the declaration of the symbol under the cursor.' },
-            { '<leader>lk', vim.lsp.buf.hover, buffer = ev.buf, desc = 'Displays info about the symbol under the cursor' },
-            { '<leader>ls', vim.lsp.buf.signature_help, buffer = ev.buf, desc = 'Displays signature info about the symbol under the cursor' },
-            { '<leader>li', vim.lsp.buf.implementation, buffer = ev.buf, desc = 'Lists all implementations of the symbol under the cursor.' },
-            { '<leader>lc', vim.lsp.buf.code_action, buffer = ev.buf, desc = 'Selects a code action available at the current cursor position.' },
+            {
+              '<leader>ld',
+              vim.lsp.buf.definition,
+              buffer = ev.buf,
+              desc = 'Jumps to the definition of the symbol under the cursor.',
+            },
+            {
+              '<leader>lD',
+              vim.lsp.buf.declation,
+              buffer = ev.buf,
+              desc = 'Jumps to the declaration of the symbol under the cursor.',
+            },
+            {
+              '<leader>lk',
+              vim.lsp.buf.hover,
+              buffer = ev.buf,
+              desc = 'Displays info about the symbol under the cursor.',
+            },
+            {
+              '<leader>ls',
+              vim.lsp.buf.signature_help,
+              buffer = ev.buf,
+              desc = 'Displays signature info about the symbol under the cursor.',
+            },
+            {
+              '<leader>li',
+              vim.lsp.buf.implementation,
+              buffer = ev.buf,
+              desc = 'Lists all implementations of the symbol under the cursor.',
+            },
+            {
+              '<leader>lc',
+              vim.lsp.buf.code_action,
+              buffer = ev.buf,
+              desc = 'Selects a code action available at the current cursor position.',
+            },
           })
         end,
       })
