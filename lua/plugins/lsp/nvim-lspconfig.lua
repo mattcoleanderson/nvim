@@ -8,6 +8,7 @@ return {
       lspconfig.tsserver.setup({})
       lspconfig.lua_ls.setup({})
       lspconfig.texlab.setup({})
+      lspconfig.html.setup({})
 
       -- Global mappings
       -- Diagnostics
