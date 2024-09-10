@@ -5,26 +5,31 @@ return {
     opts = {
       default_mappings = false,
       mappings = {
-        i = { -- insert mode
+        -- insert mode
+        i = {
           j = { -- first key
             j = '<Esc>', -- second key
           },
         },
-        c = { --command mode
+        -- command mode
+        c = {
           j = {
             j = '<Esc>',
           },
         },
+        -- terminal mode
         t = {
-          j = {
-            j = '<C-\\><C-n>',
-          },
+          [','] = {
+            [','] = '<C-\\><C-n>',
+          };
         },
+        -- visual mode
         v = {
-          j = {
-            j = '<Esc>',
+          [','] = {
+            [','] = '<Esc>',
           },
         },
+        -- select mode
         s = {
           j = {
             j = '<Esc>',
