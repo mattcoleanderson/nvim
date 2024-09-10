@@ -2,6 +2,7 @@ return {
   -- catppuccin
   {
     'catppuccin/nvim',
+    enabled = vim.g.plugins.catppuccin,
     lazy = false,
     name = 'catppuccin',
     priority = 1000,

@@ -1,4 +1,7 @@
-local M = { 'ggandor/leap.nvim' }
+local M = {
+  'ggandor/leap.nvim',
+  enabled = vim.g.plugins.leap,
+}
 
 M.lazy = false
 
@@ -8,8 +11,8 @@ M.config = function()
   wk.add({
     { 's', '<Plug>(leap)' },
     { 'S', '<Plug>(leap-from-window)' },
-    { 's', '<Plug>(leap-forward)', mode = { 'x', 'o' } },
-    { 'S', '<Plug>(leap-forward)', mode = { 'x', 'o' } },
+    { 's', '<Plug>(leap-forward)',    mode = { 'x', 'o' } },
+    { 'S', '<Plug>(leap-forward)',    mode = { 'x', 'o' } },
   })
 end
 

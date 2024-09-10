@@ -1,6 +1,7 @@
 return {
   {
     'nvim-telescope/telescope.nvim',
+    enabled = vim.g.plugins.telescope,
     tag = '0.1.6',
     dependencies = {
       'nvim-lua/plenary.nvim',

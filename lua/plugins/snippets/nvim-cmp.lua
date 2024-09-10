@@ -1,4 +1,7 @@
-local M = { 'hrsh7th/nvim-cmp' }
+local M = {
+  'hrsh7th/nvim-cmp',
+  enabled = vim.g.plugins.nvim_cmp,
+}
 
 M.dependencies = {
   'hrsh7th/cmp-nvim-lsp',

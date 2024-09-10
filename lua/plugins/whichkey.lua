@@ -1,5 +1,6 @@
 return {
   'folke/which-key.nvim',
+  enabled = vim.g.plugins.whichkey,
   event = 'VeryLazy',
   opts = {
     -- your configuration comes here

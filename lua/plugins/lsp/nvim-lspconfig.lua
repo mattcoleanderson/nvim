@@ -1,6 +1,7 @@
 return {
   {
     'neovim/nvim-lspconfig',
+    enabled = vim.g.plugins.nvim_lspconfig,
     config = function()
       local lspconfig = require('lspconfig')
       local wk = require('which-key')

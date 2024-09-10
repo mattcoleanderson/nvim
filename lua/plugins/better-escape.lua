@@ -1,6 +1,7 @@
 return {
   {
     'max397574/better-escape.nvim',
+    enabled = vim.g.plugins.better_escape,
     main = 'better_escape',
     opts = {
       default_mappings = false,

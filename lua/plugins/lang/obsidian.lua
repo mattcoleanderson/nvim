@@ -1,5 +1,6 @@
 local M = {
   'epwalsh/obsidian.nvim',
+  enabled = vim.g.plugins.obsidian,
   version = '*', -- '*' installs the latest stable version from github
   lazy = true,
 }

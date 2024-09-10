@@ -1,6 +1,7 @@
 return {
   {
     'kdheepak/lazygit.nvim',
+    enabled = vim.g.plugins.lazygit,
     cmd = {
       'LazyGit',
       'LazyGitConfig',
