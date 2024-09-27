@@ -6,6 +6,7 @@ local plugins = {
   html_liveserver = true,
   obsidian = true,
   vimtex = true,
+  nvim_java = false,
   -- lsp
   mason = true,
   mason_lspconfig = true,

@@ -14,6 +14,7 @@ return {
         'tsserver',     -- TypeScript
         'texlab',       -- LaTeX
         'html',         -- HTML
+        -- 'jdtls',        -- Java
       },
     },
   },
