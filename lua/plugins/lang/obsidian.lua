@@ -5,7 +5,7 @@ local M = {
   lazy = true,
 }
 
-local obsidian_dir = vim.fn.expand('~') .. '/repos/personal/obsidian-personal-vault'
+local obsidian_dir = vim.fn.expand('~') .. '/repos/personal/obsidian-vault'
 
 M.event = {
   'BufReadPre ' .. obsidian_dir .. '/**.md',
