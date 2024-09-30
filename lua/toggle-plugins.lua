@@ -26,6 +26,7 @@ local plugins = {
   telescope = true,
   treesitter = true,
   whichkey = true,
+  diffview = true,
 }
 
 -- create global table 'plugins'
