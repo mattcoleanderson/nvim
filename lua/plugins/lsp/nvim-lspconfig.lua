@@ -6,7 +6,7 @@ return {
       local lspconfig = require('lspconfig')
       local wk = require('which-key')
 
-      lspconfig.tsserver.setup({})
+      lspconfig.ts_ls.setup({})
       lspconfig.lua_ls.setup({
         on_attach = function(client, _)
           -- https://github.com/jose-elias-alvarez/null-ls.nvim/wiki/Avoiding-LSP-formatting-conflicts#neovim-08
