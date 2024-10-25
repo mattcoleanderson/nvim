@@ -14,6 +14,7 @@ return {
         'ts_ls',     -- TypeScript
         'texlab',       -- LaTeX
         'html',         -- HTML
+        'pylsp',        -- Python
         -- 'jdtls',        -- Java
       },
     },

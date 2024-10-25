@@ -16,6 +16,7 @@ return {
       lspconfig.texlab.setup({})
       lspconfig.html.setup({})
       lspconfig.jdtls.setup({})
+      lspconfig.pylsp.setup(require('plugins.lsp.lang.python').config)
 
       -- Global mappings
       -- Diagnostics
