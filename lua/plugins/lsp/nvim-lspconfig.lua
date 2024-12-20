@@ -17,6 +17,9 @@ return {
       lspconfig.html.setup({})
       lspconfig.pylsp.setup(require('plugins.lsp.lang.python').config)
       -- lspconfig.jdtls.setup({})
+      lspconfig.bashls.setup({})
+      lspconfig.dockerls.setup({})
+      lspconfig.jsonls.setup({})
 
       -- Global mappings
       -- Diagnostics

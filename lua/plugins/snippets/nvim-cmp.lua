@@ -11,6 +11,15 @@ M.dependencies = {
   'hrsh7th/cmp-cmdline',
   'saadparwaiz1/cmp_luasnip',
   'L3MON4D3/LuaSnip',
+  -- Zsh completion
+  {
+    'tamago324/cmp-zsh',
+    opts = {
+      zshrc = true,
+      filetypes = { 'sh' },
+    },
+  },
+  -- 'Shougo/deol.nvim',
 }
 
 M.config = function()
@@ -59,6 +68,7 @@ M.config = function()
       { name = 'nvim_lsp' },
       { name = 'nvim_lua' },
       { name = 'luasnip' }, -- For luasnip users.
+      { name = 'zsh' }, -- for cmp-zsh
     }, {
       { name = 'buffer' },
       { name = 'path' },

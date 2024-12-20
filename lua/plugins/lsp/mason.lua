@@ -16,6 +16,9 @@ return {
         'html',         -- HTML
         'pylsp',        -- Python
         -- 'jdtls',        -- Java
+        'bashls',       -- Bash
+        'dockerls',     -- Dockerfile
+        'jsonls',       -- JSON
       },
     },
   },
