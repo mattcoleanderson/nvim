@@ -25,3 +25,5 @@ require('toggle-plugins')
 require('lazy').setup('plugins') -- top-level files in lua/plugins will be auto-required
 require('keymap') -- ran last so which-key can be used, might create a second file for which-key mappings
 require('filetype')
+
+vim.cmd("colorscheme catppuccin-mocha")
