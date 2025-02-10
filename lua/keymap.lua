@@ -7,6 +7,19 @@ vim.keymap.set('n', '<leader>Q', ':conf qa<CR>', { desc = 'Exit Vim. Prompt for 
 vim.keymap.set('n', '<leader>s', ':w<CR>', { desc = 'Save the current buffer in window' })
 vim.keymap.set('n', '<leader>h', ':noh<CR>', { desc = 'Remove highlighting for search' })
 
+-- Clipboard
+vim.keymap.set('v', '<leader>y', '"+y', { desc = 'Yank to clipboard' })
+vim.keymap.set({ 'n', 'v' }, '<leader>p', '"+p', { desc = 'Put from clipbaord' })
+
+
+vim.keymap.set('n', '<leader>/', ':normal gcc<CR><DOWN>', { desc = '[/] Toggle comment line' })
+-- <Esc> - exists visual mode.
+-- :normal executes keystrokes in normal mode.
+-- gv - restores selection.
+-- gc - toggles comment
+-- <CR> sends the command
+vim.keymap.set('v', '<leader>/', '<Esc>:normal gvgc<CR>', { desc = '[/] Toggle comment block' })
+
 -- Windows
 -- if you would like to add more window commands type `:h CTRL-W`
 wk.add({
