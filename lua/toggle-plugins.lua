@@ -1,6 +1,7 @@
 local plugins = {
   --explorers
   neotree = true,
+  aerial = true,
   -- lang
   html_autotag = true,
   html_liveserver = true,
