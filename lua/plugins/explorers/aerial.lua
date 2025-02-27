@@ -12,6 +12,7 @@ local set_keymaps = function(bufnr)
     { '<leader>al', '<cmd>AerialPrev<CR>',      desc = 'Jump backwards [count] symbols', buffer = bufnr },
     { '<leader>ah', '<cmd>AerialNext<CR>',      desc = 'Jump forwards [count] symbols',  buffer = bufnr },
     { '<leader>an', '<cmd>AerialNavToggle<cr>', desc = 'Toggle the aerial nav window',   buffer = bufnr },
+    { '<leader>ai', '<cmd>AerialInfo<cr>', desc = 'Show Aeril Info',   buffer = bufnr },
   })
 end
 
@@ -19,6 +20,7 @@ M.opts = function()
   -- plugin options. These are internally passed as a table to the setup function
   return {
     on_attach = set_keymaps,
+    filter_kind = false, -- used to choose which symbols to display (false shows all symbols)
   }
 end
 
