@@ -7,6 +7,25 @@ return {
       'nvim-lua/plenary.nvim',
       'nvim-tree/nvim-web-devicons',
       'MunifTanjim/nui.nvim',
+      {
+        's1n7ax/nvim-window-picker', -- for open_with_window_picker keymaps
+        version = '2.*',
+        config = function()
+          require('window-picker').setup({
+            filter_rules = {
+              include_current_win = false,
+              autoselect_one = true,
+              -- filter using buffer options
+              bo = {
+                -- if the file type is one of following, the window will be ignored
+                filetype = { 'neo-tree', 'neo-tree-popup', 'notify' },
+                -- if the buffer type is one of following, the window will be ignored
+                buftype = { 'terminal', 'quickfix' },
+              },
+            },
+          })
+        end,
+      },
     },
     keys = function()
       local wk = require('which-key')
@@ -14,7 +33,7 @@ return {
 
       return {
         { '<leader>ee', '<cmd>Neotree filesystem reveal left toggle<CR>', desc = 'Neotree: Explore File Tree' },
-        { '<leader>eb', '<cmd>Neotree buffers reveal left toggle<CR>',    desc = 'Neotree: Explore Buffers' },
+        { '<leader>eb', '<cmd>Neotree buffers reveal left toggle<CR>', desc = 'Neotree: Explore Buffers' },
         { '<leader>eg', '<cmd>Neotree git_status reveal left toggle<CR>', desc = 'Neotree: Explore Git Status' },
       }
     end,
@@ -119,8 +138,8 @@ return {
           ['l'] = 'focus_preview',
           ['h'] = 'open_split',
           ['v'] = 'open_vsplit',
-          -- ['S'] = 'split_with_window_picker',
-          -- ['s'] = 'vsplit_with_window_picker',
+          ['S'] = 'split_with_window_picker',
+          ['s'] = 'vsplit_with_window_picker',
           ['t'] = 'open_tabnew',
           -- ['<cr>'] = 'open_drop',
           -- ['t'] = 'open_tab_drop',
@@ -186,11 +205,11 @@ return {
           },
         },
         follow_current_file = {
-          enabled = false,                      -- This will find and focus the file in the active buffer every time
+          enabled = false, -- This will find and focus the file in the active buffer every time
           --               -- the current file is changed while the tree is open.
-          leave_dirs_open = false,              -- `false` closes auto expanded dirs, such as with `:Neotree reveal`
+          leave_dirs_open = false, -- `false` closes auto expanded dirs, such as with `:Neotree reveal`
         },
-        group_empty_dirs = false,               -- when true, empty folders will be grouped together
+        group_empty_dirs = false, -- when true, empty folders will be grouped together
         hijack_netrw_behavior = 'open_default', -- netrw disabled, opening a directory opens neo-tree
         -- in whatever position is specified in window.position
         -- 'open_current',  -- netrw disabled, opening a directory opens within the
@@ -234,11 +253,11 @@ return {
       },
       buffers = {
         follow_current_file = {
-          enabled = true,          -- This will find and focus the file in the active buffer every time
+          enabled = true, -- This will find and focus the file in the active buffer every time
           --              -- the current file is changed while the tree is open.
           leave_dirs_open = false, -- `false` closes auto expanded dirs, such as with `:Neotree reveal`
         },
-        group_empty_dirs = true,   -- when true, empty folders will be grouped together
+        group_empty_dirs = true, -- when true, empty folders will be grouped together
         show_unloaded = true,
         window = {
           mappings = {
