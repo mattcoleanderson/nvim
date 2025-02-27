@@ -13,6 +13,7 @@ local plugins = {
   mason_lspconfig = true,
   none_ls = true,
   nvim_lspconfig = true,
+  nvim_lint = true,
   -- snippets
   luasnip = true,
   nvim_cmp = true,

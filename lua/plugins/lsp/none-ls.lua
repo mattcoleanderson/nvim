@@ -16,6 +16,8 @@ M.opts = function()
     sources = {
       none_ls.builtins.formatting.stylua,
       none_ls.builtins.formatting.black,
+      none_ls.builtins.formatting.shfmt,
+      none_ls.builtins.formatting.prettier,
     },
   }
 end
