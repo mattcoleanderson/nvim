@@ -2,6 +2,9 @@ local plugins = {
   --explorers
   neotree = true,
   aerial = true,
+  -- git
+  gitsigns = true,
+  lazygit = true,
   -- lang
   html_autotag = true,
   html_liveserver = true,
@@ -22,7 +25,6 @@ local plugins = {
   -- core
   better_escape = true,
   bufferline = true,
-  lazygit = true,
   leap = true,
   lualine = true,
   telescope = true,

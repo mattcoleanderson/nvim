@@ -1,8 +1,9 @@
 return {
-  { import = 'plugins.lsp' },
+  { import = 'plugins.explorers' },
+  { import = 'plugins.git' },
   { import = 'plugins.lang' },
   { import = 'plugins.lang.html' },
   { import = 'plugins.lang.markdown' },
-  { import = 'plugins.explorers' },
+  { import = 'plugins.lsp' },
   { import = 'plugins.snippets' },
 }
