@@ -126,10 +126,8 @@ return {
           nowait = true,
         },
         mappings = {
-          ['<space>'] = {
-            'toggle_node',
-            nowait = false, -- disable `nowait` if you have existing combos starting with this char that you want to use
-          },
+          ['<space>'] = 'noop',
+          ['<tab>'] = 'toggle_node',
           ['<2-LeftMouse>'] = 'open',
           ['<cr>'] = 'open',
           ['<esc>'] = 'cancel', -- close preview or floating neo-tree window
