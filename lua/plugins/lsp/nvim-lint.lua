@@ -31,6 +31,11 @@ M.config = function()
     lint.try_lint()
   end, { desc = 'Trigger linting for current file' })
 
+  -- Set pylint to work in a virtualenv
+  -- https://gist.github.com/Norbiox/652befc91ca0f90014aec34eccee27b2
+  lint.linters.pylint.cmd = 'python'
+  lint.linters.pylint.args = { '-m', 'pylint', '-f', 'json' }
+
 end
 
 return M
