@@ -14,7 +14,7 @@ return {
         'ts_ls',        -- TypeScript
         'texlab',       -- LaTeX
         'html',         -- HTML
-        'pylsp',        -- Python
+        'pyright',      -- Python
         -- 'jdtls',        -- Java
         'bashls',       -- Bash
         'dockerls',     -- Dockerfile
