@@ -7,12 +7,14 @@ return {
       local wk = require('which-key')
 
       lspconfig.ts_ls.setup({})
+
       lspconfig.lua_ls.setup({
         on_attach = function(client, _)
           -- https://github.com/jose-elias-alvarez/null-ls.nvim/wiki/Avoiding-LSP-formatting-conflicts#neovim-08
           client.server_capabilities.documentFormattingProvider = false -- turn off lsp formatting, want to use none_ls instead
         end,
       })
+
       lspconfig.texlab.setup({})
       lspconfig.html.setup({})
       -- lspconfig.pylsp.setup(require('plugins.lsp.lang.python').config)
@@ -20,7 +22,12 @@ return {
       -- lspconfig.jdtls.setup({})
       lspconfig.bashls.setup({})
       lspconfig.dockerls.setup({})
-      lspconfig.jsonls.setup({})
+
+      local capabilities = vim.lsp.protocol.make_client_capabilities()
+      capabilities.textDocument.completion.completionItem.snippetSupport = true
+      lspconfig.jsonls.setup({
+        capabilities = capabilities,
+      })
 
       -- Global mappings
       -- Diagnostics
@@ -35,7 +42,7 @@ return {
         group = vim.api.nvim_create_augroup('UserLspConfig', {}),
         callback = function(ev)
           -- Enable completion triggered by <c-x><c-o>
-          vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
+          vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc' ---@diagnostic disable-line: no-unknown
 
           -- Buffer local mappings
           -- local opts = { buffer = ev.buf }

@@ -10,7 +10,7 @@ return {
     enabled = vim.g.plugins.mason_lspconfig,
     opts = {
       ensure_installed = {
-        'lua_ls@3.7.4', -- Lua
+        'lua_ls', -- Lua
         'ts_ls',        -- TypeScript
         'texlab',       -- LaTeX
         'html',         -- HTML

@@ -17,6 +17,10 @@ local plugins = {
   none_ls = true,
   nvim_lspconfig = true,
   nvim_lint = true,
+  -- sessions
+  auto_session = true,
+  -- signs
+  marks = true,
   -- snippets
   luasnip = true,
   nvim_cmp = true,
