@@ -5,6 +5,7 @@ return {
   { import = 'plugins.lang.html' },
   { import = 'plugins.lang.markdown' },
   { import = 'plugins.lsp' },
+  { import = 'plugins.sessions' },
   { import = 'plugins.signs' },
   { import = 'plugins.snippets' },
 }
