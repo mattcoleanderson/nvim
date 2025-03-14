@@ -25,7 +25,8 @@ local plugins = {
   luasnip = true,
   nvim_cmp = true,
   -- colorschemes
-  catppuccin = true,
+  catppuccin = false,
+  cyberdream = true,
   -- core
   better_escape = true,
   bufferline = true,

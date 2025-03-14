@@ -6,6 +6,10 @@ return {
     lazy = false,
     name = 'catppuccin',
     priority = 1000,
+
+    init = function()
+      vim.g.colorscheme = 'catppuccin'
+    end,
     config = function()
       -- Set colorscheme
       vim.cmd.colorscheme('catppuccin')
@@ -13,5 +17,23 @@ return {
       vim.api.nvim_set_hl(0, 'Normal', { bg = 'none' })
       vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'none' })
     end,
+  },
+  {
+    'scottmckendry/cyberdream.nvim',
+    enabled = vim.g.plugins.cyberdream,
+    lazy = false,
+    priority = 1000,
+
+    init = function()
+      vim.g.colorscheme = 'cyberdream'
+    end,
+
+    ---@type Config
+    opts = {
+      variant = 'default',
+      transparent = false,
+      borderless_pickers = true,
+      terminal_colors = true,
+    },
   },
 }
