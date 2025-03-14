@@ -8,14 +8,15 @@ There are many ways to set vim options including:
 
 -- Set all vim options in this table
 local options = {
-  number = true,          -- Show absolute line numbers
-  relativenumber = true,  -- Show relative line numbers
+  number = true,         -- Show absolute line numbers
+  relativenumber = true, -- Show relative line numbers
   expandtab = true,
   tabstop = 4,
   softtabstop = 2,
   shiftwidth = 2,
   wrap = false,
   conceallevel = 2,
+  signcolumn = 'auto:3', -- Allows the signcolumn (gutter) to display up to X signs per line
 }
 
 -- The above table will be iterated to set options individually
