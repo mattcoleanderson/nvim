@@ -82,6 +82,7 @@ return {
               vim.lsp.buf.format,
               buffer = ev.buf,
               desc = 'Formats a buffer using the attached language server clients.',
+              mode = 'nv',
             },
           })
         end,
