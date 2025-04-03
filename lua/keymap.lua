@@ -39,8 +39,9 @@ wk.add({
 -- Custom Commands
 wk.add({
   { '<leader>g', group = 'other' }, -- A catch all for commands without a group
+  { '<leader>gc', '<cmd>ToggleConcealLevel<CR>', desc = 'Change conceal level between 2 and 0' },
+  { '<leader>ga', '<cmd>ToggleAutoComplete<CR>', desc = 'Toggle CMP autocomplete on and off' },
 })
-vim.keymap.set('n', '<leader>gc', ':ToggleConcealLevel<CR>', { desc = 'Change conceal level between 2 and 0' })
 
 -- Buffer Commands
 wk.add({
