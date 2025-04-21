@@ -25,10 +25,8 @@ M.opts = function()
   return {
     defaults = {
       vimgrep_arguments = (function()
-        print('1. getting arguments')
         local vimgrep_arguments = { unpack(config.values.vimgrep_arguments) }
 
-        print('2. adding arguments')
         -- search in hidden/dot files
         table.insert(vimgrep_arguments, '--hidden')
         table.insert(vimgrep_arguments, '--glob')
@@ -36,8 +34,6 @@ M.opts = function()
         table.insert(vimgrep_arguments, '--glob')
         table.insert(vimgrep_arguments, '!**/.node/*')
 
-
-        print('3. returning arguments')
         return vimgrep_arguments
       end)(),
     },
