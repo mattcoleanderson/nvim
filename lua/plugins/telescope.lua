@@ -19,11 +19,37 @@ M.keys = {
 }
 
 M.opts = function()
-  local theme = require('telescope.themes').get_dropdown({})
+  local themes = require('telescope.themes')
+  local config = require('telescope.config')
+
   return {
+    defaults = {
+      vimgrep_arguments = (function()
+        print('1. getting arguments')
+        local vimgrep_arguments = { unpack(config.values.vimgrep_arguments) }
+
+        print('2. adding arguments')
+        -- search in hidden/dot files
+        table.insert(vimgrep_arguments, '--hidden')
+        table.insert(vimgrep_arguments, '--glob')
+        table.insert(vimgrep_arguments, '!**/.git/*')
+        table.insert(vimgrep_arguments, '--glob')
+        table.insert(vimgrep_arguments, '!**/.node/*')
+
+
+        print('3. returning arguments')
+        return vimgrep_arguments
+      end)(),
+    },
     extensions = {
       ['ui-select'] = {
-        theme,
+        themes.get_dropdown({}),
+      },
+    },
+    pickers = {
+      find_files = {
+        -- Use ripgrep instead of find and show hidden/dotfiles as well
+        find_command = { 'rg', '--files', '--hidden', '--glob', '!**/.git/*', '--glob', '!**/.node/*' },
       },
     },
   }
