@@ -57,7 +57,7 @@ wk.add({
 
   -- Close buffers
   { '<leader>bc', group = 'Close buffer commands' },
-  { '<leader>bcc', '<cmd>bd<CR>', desc = 'Close curent buffer' },
+  { '<leader>bcc', '<cmd>CloseCurrentBuffer<CR>', desc = 'Close curent buffer' },
   { '<leader>bca', '<cmd>windo bd<CR>', desc = 'Close all buffers in current window' },
   { '<leader>bcf', '<cmd>BufferLinePickClose<CR>', desc = 'Pick buffer to close' },
   { '<leader>bch', '<cmd>BufferLineCloseLeft<CR>', desc = 'Close all buffers to the left' },
