@@ -19,6 +19,7 @@ return {
         'bashls',       -- Bash
         'dockerls',     -- Dockerfile
         'jsonls',       -- JSON
+        'yamlls',       -- YAML
       },
     },
   },

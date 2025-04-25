@@ -10,7 +10,7 @@ local M = {
 }
 
 M.opts = function()
-  local none_ls = require(M.main)
+  local none_ls = require('null-ls')
 
   return {
     sources = {

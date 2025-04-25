@@ -29,6 +29,8 @@ return {
         capabilities = capabilities,
       })
 
+      lspconfig.yamlls.setup({})
+
       -- Global mappings
       -- Diagnostics
       wk.add({ '<leader>d', group = 'diagnositcs' })
