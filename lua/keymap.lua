@@ -75,3 +75,10 @@ wk.add({
   { '<leader>gdd', '<cmd>tabnew | vnew | windo diffthis | wincmd h<CR>', desc = 'Open empty diff buffer' },
   { '<leader>gdc', '<cmd>windo bd!<cr>', desc = 'Close diff buffer (doesn\'t save)' },
 })
+
+-- Search Commands
+wk.add({
+  { '<leader>f', group = 'find', mode = 'nv' },
+  { '<leader>fr', 'y:%s/<C-r>"//gc<left><left><left>', mode = 'v', desc = 'Search and Replace selected text' },
+})
+
