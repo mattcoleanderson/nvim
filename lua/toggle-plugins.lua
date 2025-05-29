@@ -21,6 +21,7 @@ local plugins = {
   auto_session = true,
   -- signs
   marks = true,
+  coverage = true,
   -- snippets
   luasnip = true,
   nvim_cmp = true,
