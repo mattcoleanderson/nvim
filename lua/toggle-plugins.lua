@@ -11,6 +11,7 @@ local plugins = {
   obsidian = true,
   vimtex = true,
   nvim_java = false,
+  markiew = true,
   -- lsp
   mason = true,
   mason_lspconfig = true,
