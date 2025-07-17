@@ -34,6 +34,7 @@ local plugins = {
   leap = true,
   lualine = true,
   telescope = true,
+  todo = true,
   treesitter = true,
   whichkey = true,
   diffview = true,
