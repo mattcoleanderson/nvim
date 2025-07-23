@@ -18,7 +18,27 @@ return {
       lspconfig.texlab.setup({})
       lspconfig.html.setup({})
       -- lspconfig.pylsp.setup(require('plugins.lsp.lang.python').config)
-      lspconfig.pyright.setup({})
+      -- https://github.com/microsoft/pyright/blob/main/docs/settings.md
+      -- lspconfig.pyright.setup({
+      --   settings = {
+      --     python = {
+      --       analysis = {
+      --         autoImportCompletions = true,
+      --         diagnosticMode = 'openFilesOnly',
+      --         typeCheckingMode = 'off',
+      --       },
+      --     },
+      --   },
+      -- })
+      lspconfig.basedpyright.setup({
+        settings = {
+          basedpyright = {
+            analysis = {
+              typeCheckingMode = 'off',
+            },
+          },
+        },
+      })
       -- lspconfig.jdtls.setup({})
       lspconfig.bashls.setup({})
       lspconfig.dockerls.setup({})
