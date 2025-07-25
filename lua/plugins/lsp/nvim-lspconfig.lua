@@ -32,12 +32,18 @@ local add_diagnostic_keybindings = function()
 
   wk.add({ '<leader>x', group = 'diagnositcs' })
   vim.keymap.set('n', '<leader>xe', vim.diagnostic.open_float, { desc = 'Open diagnostic modal' })
-  vim.keymap.set('n', '<leader>xh', function()
-    vim.diagnostic.jump({ count = -1, float = true })
-  end, { desc = 'Go to previous diagnostic' })
-  vim.keymap.set('n', '<leader>xl', function()
-    vim.diagnostic.jump({ count = 1, float = true })
-  end, { desc = 'Go to next diagnostic' })
+  vim.keymap.set(
+    'n',
+    '<leader>xh',
+    function() vim.diagnostic.jump({ count = -1, float = true }) end,
+    { desc = 'Go to previous diagnostic' }
+  )
+  vim.keymap.set(
+    'n',
+    '<leader>xl',
+    function() vim.diagnostic.jump({ count = 1, float = true }) end,
+    { desc = 'Go to next diagnostic' }
+  )
 end
 
 local add_lsp_specific_keybindings = function()
@@ -69,7 +75,13 @@ local add_lsp_specific_keybindings = function()
         },
         {
           '<leader>lk',
-          vim.lsp.buf.hover,
+          function() vim.lsp.buf.hover({ border = 'rounded', title = ' hover ' }) end,
+          buffer = ev.buf,
+          desc = 'Displays info about the symbol under the cursor.',
+        },
+        {
+          'K',
+          function() vim.lsp.buf.hover({ border = 'rounded', title = ' hover ' }) end,
           buffer = ev.buf,
           desc = 'Displays info about the symbol under the cursor.',
         },

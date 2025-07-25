@@ -32,8 +32,13 @@ return {
     opts = {
       variant = 'default',
       transparent = false,
-      borderless_pickers = true,
+      borderless_pickers = false,
       terminal_colors = true,
+      hide_fillchars = false,
+      extensions = {
+        treesitter = true,
+        telescope = true,
+      },
     },
   },
 }
