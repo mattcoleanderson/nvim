@@ -27,16 +27,20 @@ local setup_servers = function()
   end
 end
 
-local add_diagnostic_keybindings = function ()
+local add_diagnostic_keybindings = function()
   local wk = require('which-key')
 
-  wk.add({ '<leader>d', group = 'diagnositcs' })
-  vim.keymap.set('n', '<leader>de', vim.diagnostic.open_float, { desc = 'Open diagnostic modal' })
-  vim.keymap.set('n', '<leader>dl', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic' })
-  vim.keymap.set('n', '<leader>dh', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic' })
+  wk.add({ '<leader>x', group = 'diagnositcs' })
+  vim.keymap.set('n', '<leader>xe', vim.diagnostic.open_float, { desc = 'Open diagnostic modal' })
+  vim.keymap.set('n', '<leader>xh', function()
+    vim.diagnostic.jump({ count = -1, float = true })
+  end, { desc = 'Go to previous diagnostic' })
+  vim.keymap.set('n', '<leader>xl', function()
+    vim.diagnostic.jump({ count = 1, float = true })
+  end, { desc = 'Go to next diagnostic' })
 end
 
-local add_lsp_specific_keybindings = function ()
+local add_lsp_specific_keybindings = function()
   local wk = require('which-key')
 
   -- LspAttach autocommand will only map the following keys

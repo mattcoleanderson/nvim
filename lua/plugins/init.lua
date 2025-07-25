@@ -1,4 +1,6 @@
 return {
+  { import = 'plugins.dap' },
+  { import = 'plugins.dap.lang' },
   { import = 'plugins.explorers' },
   { import = 'plugins.git' },
   { import = 'plugins.lang' },
