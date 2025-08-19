@@ -17,6 +17,8 @@ end
 M.config = function()
   local lint = require('lint')
 
+  -- TODO: Find a way to custom configure these servers 
+  -- TODO: Configure eslint_d to use the projects linter if available: https://github.com/mfussenegger/nvim-lint/issues/519
   lint.linters_by_ft = {
     javascript = { 'eslint_d' },
     typescript = { 'eslint_d' },
