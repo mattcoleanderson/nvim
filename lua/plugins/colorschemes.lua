@@ -31,7 +31,7 @@ return {
     ---@type Config
     opts = {
       variant = 'default',
-      transparent = false,
+      transparent = true,
       borderless_pickers = false,
       terminal_colors = true,
       hide_fillchars = false,
