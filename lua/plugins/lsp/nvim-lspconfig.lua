@@ -16,6 +16,7 @@ local servers = {
   dockerls = 'docker',
   jsonls = 'json',
   yamlls = 'yaml',
+  clangd = 'c',
 }
 
 local setup_servers = function()

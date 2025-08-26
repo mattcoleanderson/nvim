@@ -22,6 +22,7 @@ return {
         'dockerls',     -- Dockerfile
         'jsonls',       -- JSON
         'yamlls',       -- YAML
+        'clangd',       -- C / C++
       },
     },
   },
