@@ -16,7 +16,7 @@ M.dependencies = {
     'tamago324/cmp-zsh',
     opts = {
       zshrc = true,
-      filetypes = { 'sh' },
+      filetypes = { 'zsh' },
     },
   },
   -- 'Shougo/deol.nvim',
@@ -44,12 +44,20 @@ M.config = function()
       ['<CR>'] = cmp.mapping.confirm({
         behavior = cmp.ConfirmBehavior.Replace,
         select = true,
-      }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+      }),
+      ['<C-n>'] = cmp.mapping(function()
+        if luasnip.expand_or_jumpable() then
+          luasnip.expand_or_jump()
+        end
+      end, { 'i', 's' }),
+      ['<C-p>'] = cmp.mapping(function()
+        if luasnip.jumpable(-1) then
+          luasnip.jump(-1)
+        end
+      end, { 'i', 's' }),
       ['<Tab>'] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.select_next_item()
-        elseif luasnip.expand_or_jumpable() then
-          luasnip.expand_or_jump()
         else
           fallback()
         end
@@ -57,8 +65,6 @@ M.config = function()
       ['<S-Tab>'] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.select_prev_item()
-        elseif luasnip.jumpable(-1) then
-          luasnip.jump(-1)
         else
           fallback()
         end
