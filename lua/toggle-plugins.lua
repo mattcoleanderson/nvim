@@ -45,3 +45,5 @@ local plugins = {
 -- this variable will be added to the 'enabled' field of every plugin
 -- to allow the plugin to be toggled on or off from here.
 vim.g.plugins = plugins
+
+vim.g.lazydev_enabled = true
