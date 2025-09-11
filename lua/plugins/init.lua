@@ -2,6 +2,7 @@ return {
   { import = 'plugins.dap' },
   { import = 'plugins.dap.lang' },
   { import = 'plugins.explorers' },
+  { import = 'plugins.fun' },
   { import = 'plugins.git' },
   { import = 'plugins.lang' },
   { import = 'plugins.lang.html' },
