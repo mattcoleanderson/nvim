@@ -34,6 +34,8 @@ wk.add({
   { '<leader>wJ', '<c-w>J', desc = 'move current window to the very bottom' },
   { '<leader>wK', '<c-w>K', desc = 'move current window to the very top' },
   { '<leader>wL', '<c-w>L', desc = 'move current window to the far right' },
+
+  { '<leader>wf', '<c-w>|<c-w>_', desc = 'Max out current window size' },
 })
 
 -- Custom Commands
