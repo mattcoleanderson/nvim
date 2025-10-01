@@ -28,6 +28,7 @@ M.opts = function()
         local vimgrep_arguments = { unpack(config.values.vimgrep_arguments) }
 
         -- search in hidden/dot files
+        table.insert(vimgrep_arguments, '--pcre2')
         table.insert(vimgrep_arguments, '--hidden')
         table.insert(vimgrep_arguments, '--glob')
         table.insert(vimgrep_arguments, '!**/.git/*')
