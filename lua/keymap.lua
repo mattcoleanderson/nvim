@@ -5,7 +5,6 @@ local wk = require('which-key')
 vim.keymap.set('n', '<leader>q', ':conf q<CR>', { desc = 'Quit the current window. Prompt for unsaved buffers.' })
 vim.keymap.set('n', '<leader>Q', ':conf qa<CR>', { desc = 'Exit Vim. Prompt for unsaved buffers.' })
 vim.keymap.set('n', '<leader>s', ':w<CR>', { desc = 'Save the current buffer in window' })
-vim.keymap.set('n', '<leader>h', ':noh<CR>', { desc = 'Remove highlighting for search' })
 
 -- Clipboard
 vim.keymap.set('v', '<leader>y', '"+y', { desc = 'Yank to clipboard' })
@@ -43,6 +42,7 @@ wk.add({
   { '<leader>g', group = 'other' }, -- A catch all for commands without a group
   { '<leader>gc', '<cmd>ToggleConcealLevel<CR>', desc = 'Change conceal level between 2 and 0' },
   { '<leader>ga', '<cmd>ToggleAutoComplete<CR>', desc = 'Toggle CMP autocomplete on and off' },
+  { '<leader>gh', ':noh<CR>', desc = 'Remove highlighting for search' },
 })
 
 -- Buffer Commands
