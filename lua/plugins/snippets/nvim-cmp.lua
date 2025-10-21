@@ -101,12 +101,12 @@ M.config = function()
 
   -- Add additional capabilities from nvim-cmp to lsp
   local capabilities = require('cmp_nvim_lsp').default_capabilities()
-  local lspconfig = require('lspconfig')
+
   -- Enable some language servers with additional completion capabilities
   local servers = { 'lua_ls', 'texlab', 'html' }
   for _, lsp in ipairs(servers) do
-    lspconfig[lsp].setup({
-      capabilities = capabilities,
+    vim.lsp.config(lsp, {
+      capabilities = capabilities
     })
   end
 end

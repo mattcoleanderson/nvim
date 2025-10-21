@@ -1,3 +1,6 @@
+-- TODO: Consider doing away with lspconfig in favor of builtin
+-- lsp setup introduced by Neovim 0.11
+-- Helpful blog post: https://gpanders.com/blog/whats-new-in-neovim-0-11/#lsp
 local M = {
   'neovim/nvim-lspconfig',
   enabled = vim.g.plugins.nvim_lspconfig,
@@ -19,12 +22,13 @@ local servers = {
   clangd = 'c',
 }
 
+-- TODO: user runtimepath scanning feature to simply setup lspconfigs
+-- https://gpanders.com/blog/whats-new-in-neovim-0-11/#lsp
+--    Link to exact comment: https://arc.net/l/quote/aozwckjh
 local setup_servers = function()
-  local lspconfig = require('lspconfig')
-
   for name, module in pairs(servers) do
-    local config = require('plugins.lsp.lang.' .. module)
-    lspconfig[name].setup(config)
+    vim.lsp.config[name] = require('plugins.lsp.lang.' .. module)
+    vim.lsp.enable(name)
   end
 end
 
