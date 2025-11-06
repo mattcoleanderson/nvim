@@ -77,6 +77,77 @@ local function nearest_node(rel_file)
   end
 end
 
+-- Singleton pytest terminal (jobstart + {term=true})
+local PYTEST_TERM = { win = nil, buf = nil, job = nil }
+
+local function open_or_reuse_win(height)
+  if PYTEST_TERM.win and vim.api.nvim_win_is_valid(PYTEST_TERM.win) then
+    vim.api.nvim_set_current_win(PYTEST_TERM.win)
+  else
+    vim.cmd(("botright split | resize %d"):format(height or 12))
+    PYTEST_TERM.win = vim.api.nvim_get_current_win()
+  end
+end
+
+local function prepare_buf()
+  -- Create new scratch buffer and set to PYTEST_TERM.win
+  --    must be done first, or deleting old buffer could close window
+  local newbuf = vim.api.nvim_create_buf(false, true)
+  vim.api.nvim_win_set_buf(PYTEST_TERM.win, newbuf)
+
+  -- Delete old buffer
+  if PYTEST_TERM.buf and vim.api.nvim_buf_is_valid(PYTEST_TERM.buf) then
+    pcall(vim.api.nvim_buf_delete, PYTEST_TERM.buf, { force = true })
+  end
+
+  PYTEST_TERM.buf = newbuf
+  vim.bo[PYTEST_TERM.buf].bufhidden = "wipe"
+  vim.bo[PYTEST_TERM.buf].filetype = "pytest-output"
+end
+
+local function stop_old_job()
+  if PYTEST_TERM.job and vim.fn.jobwait({ PYTEST_TERM.job }, 0)[1] == -1 then
+    pcall(vim.fn.jobstop, PYTEST_TERM.job)
+  end
+  PYTEST_TERM.job = nil
+end
+
+local function run_in_pytest_term(cmd, opts)
+  opts = opts or {}
+  open_or_reuse_win(opts.height or 12)
+
+  -- ensure we don't leave old jobs/buffers around
+  stop_old_job()
+  prepare_buf()
+
+
+  -- run the job as a terminal in THIS window/buffer
+  -- use a shell so we can pass a string command
+  PYTEST_TERM.job = vim.fn.jobstart({ "sh", "-c", cmd }, {
+    term = true,  -- <<<< this replaces termopen()
+    on_exit = function(_, code, _)
+      if opts.close_on_success and code == 0 then
+        vim.schedule(function()
+          if PYTEST_TERM.win and vim.api.nvim_win_is_valid(PYTEST_TERM.win) then
+            pcall(vim.api.nvim_win_close, PYTEST_TERM.win, true)
+          end
+        end)
+      end
+    end,
+  })
+
+  -- convenience: 'q' closes the pytest window
+  vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], { buffer = PYTEST_TERM.buff, desc = "Terminal -> Normal mode" })
+  vim.keymap.set("n", "q", function()
+    if PYTEST_TERM.win and vim.api.nvim_win_is_valid(PYTEST_TERM.win) then
+      vim.api.nvim_win_close(PYTEST_TERM.win, true)
+    end
+  end, { buffer = PYTEST_TERM.buf, desc = "close pytest terminal" })
+
+  -- Autoscroll by default; press <Esc> to leave insert/terminal-mode any time
+  vim.cmd("startinsert")
+end
+
 local function run_task(pytest_args, use_cov)
   -- Choose which Taskfile target to run
   local target = use_cov and "backend-pytest-cov" or "backend-pytest"
@@ -84,10 +155,10 @@ local function run_task(pytest_args, use_cov)
   -- Quote once for shell; allow spaces/colons in node ids
   local cmd = string.format([[task %s PYTEST_ARGS="%s"]], target, pytest_args)
 
-  -- Run in a terminal so you can see output, re-run with <C-\><C-n>:buffer etc.
-  -- You can swap to jobstart if you prefer detached jobs/logging.
-  vim.cmd("botright split | resize 12")
-  vim.cmd("terminal " .. cmd)
+  run_in_pytest_term(cmd, {
+    height = 12,
+    close_on_success = false,
+  })
 end
 
 -- :PytestFile[!]
