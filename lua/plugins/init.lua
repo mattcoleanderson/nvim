@@ -5,6 +5,7 @@ return {
   { import = 'plugins.fun' },
   { import = 'plugins.git' },
   { import = 'plugins.lang' },
+  { import = 'plugins.lang.csharp' },
   { import = 'plugins.lang.html' },
   { import = 'plugins.lang.lua' },
   { import = 'plugins.lang.markdown' },

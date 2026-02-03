@@ -3,7 +3,13 @@ return {
   {
     'mason-org/mason.nvim', -- Mason Package manager
     enabled = vim.g.plugins.mason,
-    config = true,
+    opts = {
+      registries = {
+        "github:mason-org/mason-registry",
+        "github:Crashdummyy/mason-registry",
+      }
+    },
+    -- config = true,
   },
   {
     'mason-org/mason-lspconfig.nvim', -- Helper function to explicitly state LSPs to install.
