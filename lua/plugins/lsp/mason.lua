@@ -14,10 +14,12 @@ return {
   {
     'mason-org/mason-lspconfig.nvim', -- Helper function to explicitly state LSPs to install.
     enabled = vim.g.plugins.mason_lspconfig,
+    ---@module 'mason-lspconfig'
+    ---@type MasonLspconfigSettings
     opts = {
       automatic_enable = false, -- prevents duplicate lsp attachment if setup is called elsewhere
       ensure_installed = {
-        'lua_ls', -- Lua
+        'lua_ls@3.16.4', -- Lua (pinning because of bug: https://github.com/folke/lazydev.nvim/issues/136)
         'ts_ls',        -- TypeScript
         'texlab',       -- LaTeX
         'html',         -- HTML
