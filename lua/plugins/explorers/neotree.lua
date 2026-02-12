@@ -237,6 +237,7 @@ return {
             ['os'] = { 'order_by_size', nowait = false },
             ['ot'] = { 'order_by_type', nowait = false },
             -- ['<key>'] = function(state) ... end,
+            ['O'] = 'system_open',
           },
           fuzzy_finder_mappings = { -- define keymaps for filter popup window in fuzzy_finder_mode
             ['<down>'] = 'move_cursor_down',
@@ -247,7 +248,32 @@ return {
           },
         },
 
-        commands = {}, -- Add a custom command or override a global one using the same function name
+        commands = {
+          system_open = function(state)
+            local node = state.tree:get_node()
+            local path = node:get_id()
+
+            local uname = vim.uv.os_uname().sysname -- returns the current OS
+
+            if uname == 'Darwin' then
+              -- macOs: open file in default application in the background.
+              vim.fn.jobstart({ 'open', path }, { detach = true })
+            elseif uname == 'Linux' then
+              -- Linux: open file in default application
+              vim.fn.jobstart({ 'xdg-open', path }, { detach = true })
+            elseif uname == 'Windows_NT' then
+              -- Windows: Without removing the file from the path, it opens in code.exe instead of explorer.exe
+              local p
+              local lastSlashIndex = path:match('^.+()\\[^\\]*$') -- Match the last slash and everything before it
+              if lastSlashIndex then
+                p = path:sub(1, lastSlashIndex - 1) -- Extract substring before the last slash
+              else
+                p = path -- If no slash found, return original path
+              end
+              vim.cmd('silent !start explorer ' .. p)
+            end
+          end,
+        }, -- Add a custom command or override a global one using the same function name
       },
       buffers = {
         follow_current_file = {
