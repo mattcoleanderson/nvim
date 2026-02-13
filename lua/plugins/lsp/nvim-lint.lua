@@ -7,9 +7,7 @@ local M = {
 }
 
 local get_lsp_client = function()
-  local clients = vim.tbl_filter(function(c)
-    return c.name ~= "null-ls"
-  end, vim.lsp.get_clients({ bufnr = 0 }))
+  local clients = vim.tbl_filter(function(c) return c.name ~= 'null-ls' end, vim.lsp.get_clients({ bufnr = 0 }))
 
   return clients[1] or {}
 end
@@ -17,7 +15,7 @@ end
 M.config = function()
   local lint = require('lint')
 
-  -- TODO: Find a way to custom configure these servers 
+  -- TODO: Find a way to custom configure these servers
   -- TODO: Configure eslint_d to use the projects linter if available: https://github.com/mfussenegger/nvim-lint/issues/519
   lint.linters_by_ft = {
     javascript = { 'eslint_d' },
@@ -32,13 +30,25 @@ M.config = function()
 
   vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWritePost', 'InsertLeave' }, {
     group = lint_augroup,
-    callback = function ()
+    callback = function()
+      local linter_names = lint._resolve_linter_by_ft(vim.bo.filetype)
+      local available_linters = vim.tbl_filter(function(name)
+        local linter = lint.linters[name]
+        local cmd = type(linter) == 'table' and linter.cmd
+        cmd = type(cmd) == 'string' and cmd or name
+        if vim.fn.executable(cmd) == 0 then
+          vim.notify('nvim-lint: ' .. cmd .. ' not found, skipping', vim.log.levels.WARN)
+          return false
+        end
+        return true
+      end, linter_names)
+      if #available_linters == 0 then return end
       local client = get_lsp_client()
-      lint.try_lint(nil, { cwd = client.root_dir })
+      lint.try_lint(available_linters, { cwd = client.root_dir })
     end,
   })
 
-  vim.keymap.set('n', '<leader>ll', function ()
+  vim.keymap.set('n', '<leader>ll', function()
     local client = get_lsp_client()
     lint.try_lint(nil, { cwd = client.root_dir })
   end, { desc = 'Trigger linting for current file' })
@@ -47,7 +57,6 @@ M.config = function()
   -- https://gist.github.com/Norbiox/652befc91ca0f90014aec34eccee27b2
   lint.linters.pylint.cmd = 'python'
   lint.linters.pylint.args = { '-m', 'pylint', '-f', 'json' }
-
 end
 
 return M
