@@ -1,20 +1,22 @@
 local M = {
   'nvim-telescope/telescope.nvim',
   enabled = vim.g.plugins.telescope,
-  tag = '0.1.8',
   dependencies = {
     'nvim-lua/plenary.nvim',
     'nvim-telescope/telescope-ui-select.nvim',
+    'nvim-telescope/telescope-live-grep-args.nvim',
   },
 }
 
 M.keys = {
   { '<leader>ff', '<cmd>Telescope find_files<cr>', desc = 'Telescope: Search all project files' },
-  { '<leader>fg', '<cmd>Telescope git_files<cr>',  desc = 'Telescope: Search git files' },
+  { '<leader>fg', '<cmd>Telescope git_files<cr>', desc = 'Telescope: Search git files' },
   {
     '<leader>fs',
-    '<cmd>Telescope live_grep<cr>',
-    desc = 'Telescope: Search for a string the current working directory',
+    function()
+      require('telescope').extensions.live_grep_args.live_grep_args()
+    end,
+    desc = 'Telescope: Search for a string in the current working directory',
   },
 }
 
@@ -57,6 +59,7 @@ M.config = function(_, opts)
 
   plugin.setup(opts)
   plugin.load_extension('ui-select')
+  plugin.load_extension('live_grep_args')
 end
 
 return M
