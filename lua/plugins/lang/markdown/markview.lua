@@ -6,6 +6,8 @@ local M = {
   dependencies = { 'nvim-tree/nvim-web-devicons' },
 }
 
+---@module 'markview'
+---@type markview.config
 M.opts = {
   preview = {
     icon_provider = 'devicons', -- "mini" or "devicons"
