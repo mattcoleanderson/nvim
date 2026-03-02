@@ -17,7 +17,7 @@ local options = {
   conceallevel = 2,
   signcolumn = 'auto:3', -- Allows the signcolumn (gutter) to display up to X signs per line
   laststatus = 3,
-  -- winborder = 'single', -- adds border to floating windows
+  winborder = 'rounded', -- adds border to floating windows
 }
 
 -- The above table will be iterated to set options individually

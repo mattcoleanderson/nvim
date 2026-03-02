@@ -28,16 +28,18 @@ return {
       vim.g.colorscheme = 'cyberdream'
     end,
 
-    ---@type Config
+    ---@module 'cyberdream'
+    ---@type cyberdream.Config
     opts = {
       variant = 'default',
       transparent = true,
       borderless_pickers = false,
       terminal_colors = true,
       hide_fillchars = false,
+      cache = true, -- build cache with :CyberdreamBuildCache / clear with :CyberdreamClearCache
       extensions = {
-        treesitter = true,
-        telescope = true,
+        default = true,
+        base = true,
       },
     },
   },
