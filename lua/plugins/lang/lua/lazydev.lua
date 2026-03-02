@@ -3,7 +3,8 @@ local M = {
   ft = 'lua', -- only load on lua files
   dependencies = {
     { 'justinsgithub/wezterm-types', lazy = true },
-    { 'hrsh7th/nvim-cmp' },
+    -- TODO: Remove nvim-cmp settings in favor of blink-cmp
+    -- { 'hrsh7th/nvim-cmp' },
   },
   opts = {
     library = {
@@ -13,17 +14,19 @@ local M = {
       { path = '${3rd}/luv/library', words = { 'vim%.uv' } },
     },
   },
-  config = function(_, opts)
-    require('lazydev').setup(opts)
+  -- TODO: Remove nvim-cmp settings in favor of blink-cmp
 
-    -- extend cmp once lazydev is loaded
-    local cmp = require('cmp')
-    cmp.setup({
-      sources = cmp.config.sources({
-        { name = 'lazydev', group_index = 0 },
-      }, cmp.get_config().sources),
-    })
-  end,
+  -- config = function(_, opts)
+  --   require('lazydev').setup(opts)
+  --
+  --   -- extend cmp once lazydev is loaded
+  --   local cmp = require('cmp')
+  --   cmp.setup({
+  --     sources = cmp.config.sources({
+  --       { name = 'lazydev', group_index = 0 },
+  --     }, cmp.get_config().sources),
+  --   })
+  -- end,
 }
 
 return M

@@ -16,21 +16,6 @@ vim.api.nvim_create_user_command('ToggleConcealLevel', ToggleConcealLevel, {
   desc = 'Toggle conceal level vim option between 2 and 0.',
 })
 
--- Toggle nvim-cmp autocomplete
-local function ToggleAutoComplete()
-  local cmp = require('cmp')
-
-  cmp.setup({
-    enabled = not cmp.get_config().enabled,
-  })
-
-  print('Autocomplete: ' .. (cmp.get_config().enabled and 'ON' or 'OFF'))
-end
-
-vim.api.nvim_create_user_command('ToggleAutoComplete', ToggleAutoComplete, {
-  desc = 'Toggle cmp autocomplete on and off'
-})
-
 -- Close current buffer without closing window
 -- switches to the buffer to the left otherwise right otherwise opens a new buffer
 local function CloseCurrentBuffer()

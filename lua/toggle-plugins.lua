@@ -24,8 +24,10 @@ local plugins = {
   marks = true,
   coverage = true,
   -- snippets
-  luasnip = true,
-  nvim_cmp = true,
+  -- TODO: remove luasnip and nvim_cmp in favor of blink
+  luasnip = false,
+  nvim_cmp = false,
+  blink_cmp = true,
   -- colorschemes
   catppuccin = false,
   cyberdream = true,
