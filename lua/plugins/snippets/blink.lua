@@ -42,6 +42,18 @@ local M = {
           end,
         },
       },
+      menu = {
+        border = 'rounded',
+        draw = {
+          -- space out the completion menus icon and text
+          padding = { 0, 1 },
+          components = {
+            kind_icon = {
+              text = function(ctx) return ' ' .. ctx.kind_icon .. ctx.icon_gap .. ' ' end
+            },
+          },
+        },
+      },
     },
     signature = { enabled = true },
 
