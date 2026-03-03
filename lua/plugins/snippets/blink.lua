@@ -31,6 +31,17 @@ local M = {
     completion = {
       accept = { auto_brackets = { enabled = false } },
       documentation = { auto_show = true },
+      list = {
+        selection = {
+          auto_insert = true,
+
+          -- Don't preselect a completion if there is an active snippet that can
+          -- be navigated forward
+          preselect = function (_)
+            return not require('blink.cmp').snippet_active({ direction = 1 })
+          end,
+        },
+      },
     },
     signature = { enabled = true },
 
