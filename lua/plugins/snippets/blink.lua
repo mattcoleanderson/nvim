@@ -1,3 +1,5 @@
+-- Blink is a completion engine for Neovim
+--     Documentaion: https://cmp.saghen.dev/
 local M = {
   'saghen/blink.cmp',
   enabled = vim.g.plugins.blink_cmp,
