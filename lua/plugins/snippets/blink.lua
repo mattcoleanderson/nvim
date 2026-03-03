@@ -19,6 +19,18 @@ local M = {
       -- Open menu or open docs if already open
       --     default is C-space, but I use C-space as my tmux prefix
       ['<M-space>'] = { 'show', 'show_documentation', 'hide_documentation' },
+
+      -- Select Nth item from the completion list
+      ['<M-1>'] = { function(cmp) cmp.accept({ index = 1 }) end },
+      ['<M-2>'] = { function(cmp) cmp.accept({ index = 2 }) end },
+      ['<M-3>'] = { function(cmp) cmp.accept({ index = 3 }) end },
+      ['<M-4>'] = { function(cmp) cmp.accept({ index = 4 }) end },
+      ['<M-5>'] = { function(cmp) cmp.accept({ index = 5 }) end },
+      ['<M-6>'] = { function(cmp) cmp.accept({ index = 6 }) end },
+      ['<M-7>'] = { function(cmp) cmp.accept({ index = 7 }) end },
+      ['<M-8>'] = { function(cmp) cmp.accept({ index = 8 }) end },
+      ['<M-9>'] = { function(cmp) cmp.accept({ index = 9 }) end },
+      ['<M-0>'] = { function(cmp) cmp.accept({ index = 10 }) end },
     },
 
     appearance = {
@@ -37,21 +49,28 @@ local M = {
 
           -- Don't preselect a completion if there is an active snippet that can
           -- be navigated forward
-          preselect = function (_)
-            return not require('blink.cmp').snippet_active({ direction = 1 })
-          end,
+          preselect = function(_) return not require('blink.cmp').snippet_active({ direction = 1 }) end,
         },
       },
       menu = {
         border = 'rounded',
         draw = {
+          columns = {
+            { 'item_idx' },
+            { 'kind_icon' },
+            { 'label', 'label_description', gap = 1 },
+          },
           -- space out the completion menus icon and text
-          padding = { 0, 1 },
           components = {
+            item_idx = {
+              -- highlight = 'BlinkCmpItemIdx',
+              text = function(ctx) return ctx.idx == 10 and '0' or ctx.idx >= 10 and ' ' or tostring(ctx.idx) end,
+            },
             kind_icon = {
-              text = function(ctx) return ' ' .. ctx.kind_icon .. ctx.icon_gap .. ' ' end
+              text = function(ctx) return ' ' .. ctx.kind_icon .. ctx.icon_gap .. ' ' end,
             },
           },
+          padding = { 0, 1 },
         },
       },
     },
