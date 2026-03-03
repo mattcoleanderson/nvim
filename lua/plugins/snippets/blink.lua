@@ -6,19 +6,20 @@ local M = {
   ---@module 'blink.cmp'
   ---@type blink.cmp.Config
   opts = {
-    -- 'default' (recommended) for mappings similar to built-in completions (C-y to accept)
-    -- 'super-tab' for mappings similar to vscode (tab to accept)
-    -- 'enter' for enter to accept
-    -- 'none' for no mappings
-    --
-    -- All presets have the following mappings:
-    -- C-space: Open menu or open docs if already open
-    -- C-n/C-p or Up/Down: Select next/previous item
-    -- C-e: Hide menu
-    -- C-k: Toggle signature help (if signature.enabled = true)
-    --
     -- See :h blink-cmp-config-keymap for defining your own keymap
-    keymap = { preset = 'default' },
+    keymap = {
+      preset = 'super-tab', -- tab to accept
+      -- C-e: Hide menu
+      -- C-n/C-p or Up/Down: Select next/previous item
+      -- C-k: Toggle signature help (if signature.enabled = true)
+      -- C-b/C-f: Scroll up/down documentation
+
+      -- Custom Keymaps --------------------------------------------------------
+
+      -- Open menu or open docs if already open
+      --     default is C-space, but I use C-space as my tmux prefix
+      ['<M-space>'] = { 'show', 'show_documentation', 'hide_documentation' },
+    },
 
     appearance = {
       -- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
