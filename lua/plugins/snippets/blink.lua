@@ -83,6 +83,11 @@ local M = {
     sources = {
       default = { 'lsp', 'path', 'snippets', 'buffer', 'lazydev' },
       providers = {
+        path = {
+          opts = {
+            show_hidden_files_by_default = true,
+          },
+        },
         lazydev = {
           name = 'LazyDev',
           module = 'lazydev.integrations.blink',
