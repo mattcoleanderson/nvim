@@ -3,8 +3,10 @@ return {
   settings = {
     basedpyright = {
       analysis = {
-        typeCheckingMode = 'off',
+        typeCheckingMode = 'basic',
+        reportAbstractUsage = 'error',
         diagnosticMode = 'workspace',
+        importFormat = 'relative',
       },
     },
   },
