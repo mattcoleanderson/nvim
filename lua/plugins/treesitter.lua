@@ -3,7 +3,6 @@ local M = {
   enabled = vim.g.plugins.treesitter,
   lazy = false,
   build = ':TSUpdate',
-  main = 'nvim-treesitter.configs',
   dependencies = { 'OXY2DEV/markview.nvim' },
 }
 

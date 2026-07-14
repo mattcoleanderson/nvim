@@ -24,3 +24,12 @@ local options = {
 for option, value in pairs(options) do
   vim.opt[option] = value
 end
+
+-- Sync vim.o.background with macOS dark/light mode
+local function sync_macos_appearance()
+  local result = vim.fn.system('defaults read -g AppleInterfaceStyle 2>/dev/null')
+  vim.o.background = result:find('Dark') and 'dark' or 'light'
+end
+
+sync_macos_appearance()
+vim.api.nvim_create_autocmd('FocusGained', { callback = sync_macos_appearance })

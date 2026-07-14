@@ -31,12 +31,12 @@ return {
     ---@module 'cyberdream'
     ---@type cyberdream.Config
     opts = {
-      variant = 'default',
-      transparent = true,
+      variant = 'auto',
+      transparent = false,
       borderless_pickers = false,
       terminal_colors = true,
       hide_fillchars = false,
-      cache = true, -- build cache with :CyberdreamBuildCache / clear with :CyberdreamClearCache
+      cache = false, -- build cache with :CyberdreamBuildCache / clear with :CyberdreamClearCache
       extensions = {
         default = true,
         base = true,
