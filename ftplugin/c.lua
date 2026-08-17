@@ -5,7 +5,7 @@ local commands = {
   {
     name = 'BuildRun',
     rhs = function() vim.cmd('!cd %:h && gcc -o %:t:r %:t && ./%:t:r') end,
-    desc = 'Build and run the C file in the currnet buffer',
+    desc = 'Build and run the C file in the current buffer',
     keys = { mapping = '<leader>cb', desc = "Build & Run" },
   },
   {
