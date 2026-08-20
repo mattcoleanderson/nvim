@@ -88,6 +88,14 @@ local M = {
             show_hidden_files_by_default = true,
           },
         },
+        -- blink doesn't support special characters as completion triggers
+        -- below you can add special charaters you'd like to trigger
+        -- for example '/' for C comments and '#' for C constructs like #include or #define
+        snippets = {
+          override = {
+            get_trigger_characters = function(_) return { '/', '#' } end,
+          },
+        },
         lazydev = {
           name = 'LazyDev',
           module = 'lazydev.integrations.blink',
