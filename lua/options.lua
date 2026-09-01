@@ -51,4 +51,4 @@ vim.api.nvim_create_autocmd('LspAttach', {
       vim.wo[win].foldexpr = 'v:lua.vim.lsp.foldexpr()'
     end
   end,
- )
+})
