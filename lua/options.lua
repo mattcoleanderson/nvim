@@ -18,6 +18,13 @@ local options = {
   signcolumn = 'auto:3', -- Allows the signcolumn (gutter) to display up to X signs per line
   laststatus = 3,
   winborder = 'rounded', -- adds border to floating windows
+
+  -- Folding: default to treesitter, upgraded to LSP per-buffer via LspAttach
+  foldmethod = 'expr',
+  foldexpr = 'v:lua.vim.treesitter.foldexpr()',
+  foldtext = '',
+  foldlevel = 99,
+  foldlevelstart = 99,
 }
 
 -- The above table will be iterated to set options individually
@@ -33,3 +40,15 @@ end
 
 sync_macos_appearance()
 vim.api.nvim_create_autocmd('FocusGained', { callback = sync_macos_appearance })
+
+-- When an LSP client that supports folding attaches, use LSP folds instead of treesitter
+vim.api.nvim_create_autocmd('LspAttach', {
+  group = vim.api.nvim_create_augroup('LspFolding', {}),
+  callback = function(ev)
+    local client = vim.lsp.get_client_by_id(ev.data.client_id)
+    if client and client:supports_method('textDocument/foldingRange') then
+      local win = vim.api.nvim_get_current_win()
+      vim.wo[win].foldexpr = 'v:lua.vim.lsp.foldexpr()'
+    end
+  end,
+ )

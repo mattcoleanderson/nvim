@@ -43,6 +43,29 @@ wk.add({
   { '<leader>gc', '<cmd>ToggleConcealLevel<CR>', desc = 'Change conceal level between 2 and 0' },
   { '<leader>ga', '<cmd>ToggleAutoComplete<CR>', desc = 'Toggle CMP autocomplete on and off' },
   { '<leader>gh', ':noh<CR>', desc = 'Remove highlighting for search' },
+  {
+    '<leader>gz',
+    function()
+      if vim.wo.foldmethod == 'manual' then
+        vim.wo.foldmethod = 'expr'
+        -- Restore LSP folds if available, otherwise treesitter
+        local clients = vim.lsp.get_clients({ bufnr = 0 })
+        local has_lsp_folds = false
+        for _, client in ipairs(clients) do
+          if client:supports_method('textDocument/foldingRange') then
+            has_lsp_folds = true
+            break
+          end
+        end
+        vim.wo.foldexpr = has_lsp_folds and 'v:lua.vim.lsp.foldexpr()' or 'v:lua.vim.treesitter.foldexpr()'
+        vim.notify('Folds: ' .. (has_lsp_folds and 'LSP' or 'treesitter'))
+      else
+        vim.wo.foldmethod = 'manual'
+        vim.notify('Folds: manual')
+      end
+    end,
+    desc = 'Toggle fold method (expr/manual)',
+  },
 })
 
 -- Buffer Commands
