@@ -1,5 +1,3 @@
-local wk = require('which-key')
-
 local function paths()
   local buf = vim.api.nvim_get_current_buf()
   local file = vim.api.nvim_buf_get_name(buf)
