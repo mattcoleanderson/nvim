@@ -128,6 +128,15 @@ local add_lsp_specific_keybindings = function()
           desc = 'Displays info about the symbol under the cursor.',
         },
         {
+          '<leader>lh',
+          function()
+            local opts = { bufnr = ev.buf }
+            vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled(opts), opts)
+          end,
+          buffer = ev.buf,
+          desc = 'Toggles LSP inlay hints in the current buffer.',
+        },
+        {
           'K',
           function()
             vim.lsp.buf.hover({ border = 'rounded', title = ' hover ' })
