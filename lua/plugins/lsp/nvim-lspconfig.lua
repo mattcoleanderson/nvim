@@ -66,17 +66,60 @@ local add_lsp_specific_keybindings = function()
       -- local opts = { buffer = ev.buf }
       wk.add({
         { '<leader>l', group = 'lsp' },
+        { '<leader>lg', group = 'navigation', buffer = ev.buf },
         {
-          '<leader>ld',
+          '<leader>lgd',
           vim.lsp.buf.definition,
           buffer = ev.buf,
           desc = 'Jumps to the definition of the symbol under the cursor.',
         },
         {
-          '<leader>lD',
+          '<leader>lgD',
           vim.lsp.buf.declaration,
           buffer = ev.buf,
           desc = 'Jumps to the declaration of the symbol under the cursor.',
+        },
+        {
+          '<leader>lgt',
+          vim.lsp.buf.type_definition,
+          buffer = ev.buf,
+          desc = 'Jumps to the type definition of the symbol under the cursor.',
+        },
+        {
+          '<leader>lgi',
+          vim.lsp.buf.implementation,
+          buffer = ev.buf,
+          desc = 'Lists all implementations of the symbol under the cursor.',
+        },
+        {
+          '<leader>lgr',
+          vim.lsp.buf.references,
+          buffer = ev.buf,
+          desc = 'Lists all references of the symbol under the cursor.',
+        },
+        {
+          '<leader>lgI',
+          vim.lsp.buf.incoming_calls,
+          buffer = ev.buf,
+          desc = 'Lists all functions that call the function under the cursor.',
+        },
+        {
+          '<leader>lgO',
+          vim.lsp.buf.outgoing_calls,
+          buffer = ev.buf,
+          desc = 'Lists all functions called by the function under the cursor.',
+        },
+        {
+          '<leader>lgo',
+          vim.lsp.buf.document_symbol,
+          buffer = ev.buf,
+          desc = 'Lists all symbols in the current buffer.',
+        },
+        {
+          '<leader>lgw',
+          vim.lsp.buf.workspace_symbol,
+          buffer = ev.buf,
+          desc = 'Searches for symbols in the current workspace.',
         },
         {
           '<leader>lk',
@@ -102,10 +145,10 @@ local add_lsp_specific_keybindings = function()
           desc = 'Displays signature info about the symbol under the cursor.',
         },
         {
-          '<leader>li',
-          vim.lsp.buf.implementation,
+          '<leader>ln',
+          vim.lsp.buf.rename,
           buffer = ev.buf,
-          desc = 'Lists all implementations of the symbol under the cursor.',
+          desc = 'Renames the symbol under the cursor across the workspace.',
         },
         {
           '<leader>lc',
