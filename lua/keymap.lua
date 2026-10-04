@@ -98,6 +98,28 @@ wk.add({
 wk.add({
   { '<leader>gd', group = 'diffs' },
   { '<leader>gdd', '<cmd>tabnew | vnew | windo diffthis | wincmd h<CR>', desc = 'Open empty diff buffer' },
+  {
+    '<leader>gdp',
+    function()
+      local lines = vim.fn.getreg('+', 1, true)
+      local filetype = vim.bo.filetype
+
+      vim.cmd('tab split')
+      local source_window = vim.api.nvim_get_current_win()
+      vim.cmd('diffthis')
+      vim.cmd('rightbelow vnew')
+      vim.bo.buftype = 'nofile'
+      vim.bo.bufhidden = 'wipe'
+      vim.bo.swapfile = false
+      vim.api.nvim_buf_set_lines(0, 0, -1, false, lines)
+      vim.bo.filetype = filetype
+      vim.bo.modified = false
+      vim.bo.modifiable = false
+      vim.cmd('diffthis')
+      vim.api.nvim_set_current_win(source_window)
+    end,
+    desc = 'Diff current buffer against clipboard',
+  },
   { '<leader>gdc', '<cmd>windo bd!<cr>', desc = 'Close diff buffer (doesn\'t save)' },
 })
 
@@ -106,4 +128,3 @@ wk.add({
   { '<leader>f', group = 'find', mode = 'nv' },
   { '<leader>fr', 'y:%s/<C-r>"//gc<left><left><left>', mode = 'v', desc = 'Search and Replace selected text' },
 })
-
