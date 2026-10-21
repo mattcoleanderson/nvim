@@ -29,7 +29,14 @@ M.config = function()
 
     if vim.list_contains(treesitter.get_available(), lang) then
       -- Share pending installs across buffers using the same language.
-      installs[lang] = installs[lang] or treesitter.install({ lang })
+      if not installs[lang] then
+        installs[lang] = treesitter.install({ lang })
+        installs[lang]:await(vim.schedule_wrap(function(err, success)
+          if not err and success then
+            vim.notify('Installed parser: ' .. lang, vim.log.levels.INFO, { title = 'Tree-sitter' })
+          end
+        end))
+      end
       installs[lang]:await(vim.schedule_wrap(function(err)
         installs[lang] = nil
         if not err then
