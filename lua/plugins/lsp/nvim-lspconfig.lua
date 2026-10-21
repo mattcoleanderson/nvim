@@ -12,6 +12,7 @@ local M = {
 local servers = {
   ts_ls = 'typescript',
   emmet_language_server = 'emmet',
+  tailwindcss = 'tailwindcss',
   lua_ls = 'lua',
   texlab = 'latex',
   html = 'html',
