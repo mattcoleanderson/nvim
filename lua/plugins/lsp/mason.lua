@@ -21,6 +21,7 @@ return {
       ensure_installed = {
         'lua_ls@3.16.4', -- Lua (pinning because of bug: https://github.com/folke/lazydev.nvim/issues/136)
         'ts_ls',        -- TypeScript
+        'emmet_language_server', -- JSX / TSX tag expansions
         'texlab',       -- LaTeX
         'html',         -- HTML
         -- 'pyright',      -- Python

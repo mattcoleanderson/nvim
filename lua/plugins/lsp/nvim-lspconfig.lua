@@ -11,6 +11,7 @@ local M = {
 -- Name of server: name of module file
 local servers = {
   ts_ls = 'typescript',
+  emmet_language_server = 'emmet',
   lua_ls = 'lua',
   texlab = 'latex',
   html = 'html',
