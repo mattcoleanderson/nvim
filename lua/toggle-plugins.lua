@@ -34,6 +34,7 @@ local plugins = {
   -- core
   better_escape = true,
   bufferline = true,
+  colorful_winsep = true,
   illuminate = true,
   leap = true,
   lualine = true,
