@@ -19,6 +19,12 @@ vim.keymap.set('n', '<leader>/', ':normal gcc<CR><DOWN>', { desc = '[/] Toggle c
 vim.keymap.set('v', '<leader>/', '<Esc>:normal gvgc<CR>', { desc = '[/] Toggle comment block' })
 
 -- Windows
+-- Navigate splits in normal mode without affecting insert-mode shortcuts
+vim.keymap.set('n', '<C-h>', '<C-w>h', { desc = 'Focus left split' })
+vim.keymap.set('n', '<C-j>', '<C-w>j', { desc = 'Focus split below' })
+vim.keymap.set('n', '<C-k>', '<C-w>k', { desc = 'Focus split above' })
+vim.keymap.set('n', '<C-l>', '<C-w>l', { desc = 'Focus right split' })
+
 -- if you would like to add more window commands type `:h CTRL-W`
 wk.add({
   { '<leader>w', proxy = '<c-w>', group = 'window' }, -- proxy to window mappings
@@ -75,8 +81,8 @@ wk.add({
   -- Navigate buffers
   { '<leader>bh', '<cmd>BufferLineCyclePrev<CR>', desc = 'Navigate to next buffer' },
   { '<leader>bl', '<cmd>BufferLineCycleNext<CR>', desc = 'Navigate to previous buffer' },
-  { 'H', '<cmd>BufferLineCyclePrev<CR>', desc = 'Navigate to next buffer' },
-  { 'L', '<cmd>BufferLineCycleNext<CR>', desc = 'Navigate to previous buffer' },
+  { '<C-p>', '<cmd>BufferLineCyclePrev<CR>', mode = 'n', desc = 'Navigate to previous buffer' },
+  { '<C-n>', '<cmd>BufferLineCycleNext<CR>', mode = 'n', desc = 'Navigate to next buffer' },
 
   { '<leader>bf', '<cmd>BufferLinePick<CR>', desc = 'Pick buffer to switch to' },
 
