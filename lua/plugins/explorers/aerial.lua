@@ -1,7 +1,8 @@
 local M = {
   'stevearc/aerial.nvim',
   enabled = vim.g.plugins.aerial,
-  version = '*',
+  branch = 'master',
+  version = false, -- Use the Neovim 0.12 Tree-sitter fixes beyond tagged releases.
 }
 
 local set_keymaps = function(bufnr)
