@@ -38,6 +38,7 @@ local plugins = {
   illuminate = true,
   leap = true,
   lualine = true,
+  opencode = true,
   telescope = true,
   todo = true,
   treesitter = true,
